@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org.dtd.mybatis-3-mapper.dtd">
+<mapper namespace ="com.example.demo.DAO.UserMapper">
+	
+	<select id="getUname" parameterType = "String" resultType="String">
+		SELECT uname FROM USERINFO WHERE ID = #{id}
+	</select>
+	
+	<select id="login" parameterType = "String" resultType="String">
+		SELECT ID, PW FROM USERINFO WHERE ID = #{ID} AND PW = #{PW}
+	</select>
+	
+	<select id="CheckUser" parameterType = "String" resultType="String">
+		SELECT ID FROM USERINFO WHERE UNAME = #{UNAME}
+	</select>
+	
+	<select id="InsertUser" parameterType = "String" resultType="String">
+		INSERT INTO USERINFO (ID, PW, UNAME) VALUES (#{ID}, #{PW}, #{UNAME})
+	</select>
+	
+	<select id ="getUID" parameterType = "String" resultType="int">
+		SELECT UID FROM USERINFO WHERE ID = #{ID}
+	</select>
+	
+	<select id ="InsertPlan" parameterType = "String">
+		INSERT INTO PLANINFO (UID, PNAME, PDATE, PTEXT) VALUES (#{UID}, #{PNAME}, #{PDATE}, #{PTEXT})
+	</select>
+	
+	<select id="getPlan" parameterType = "String" resultType="plandto">
+		SELECT PNAME, PDATE, PTEXT FROM PLANINFO WHERE UID = #{UID}
+	</select>
+	
+	<select id = "fixPlan" parameterType = "String">
+		UPDATE PLANINFO SET PNAME = #{PNAME}, PDATE = #{PDATE}, PTEXT = #{PTEXT} WHERE PID = #{PID}
+	</select>
+	
+	<select id = "getPID" parameterType = "String" resultType="int">
+		SELECT PID FROM PLANINFO WHERE PNAME = #{PNAME}
+	</select>
+	
+	<select id ="deletePlan" parameterType = "String">
+		DELETE FROM PLANINFO WHERE PID = #{PID}
+	</select>
+	
+	<select id = "getPDATE" parameterType = "String" resultType = "String">
+		SELECT PDATE FROM PLANINFO WHERE PID = #{PID}
+	</select>
+	
+	<select id = "gettuname" parameterType = "String" resultType = "String">
+		SELECT Name FROM tutor WHERE Number = #{Number}
+	</select>
+	</mapper>
